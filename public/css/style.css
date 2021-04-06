@@ -566,6 +566,11 @@ padding: 35px 57px 50px;
   font-size: 16px;
 
 }
+.textContent li {
+  color: #9a9ae1;
+  font-size: 16px;
+
+}
 .textContent {
   margin-top: 15px;
 }
