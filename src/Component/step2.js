@@ -24,9 +24,9 @@ class Step2 extends Component {
         this.skill_event()
     }
 
-    handleClick = (event) =>{
+    handleClick(event) {
         let getClassName = document.getElementsByClassName("pageList");
-        for (let i = 1; i <= getClassName.length; i++) {
+        for (let i =1; i<=getClassName.length; i++){
             document.getElementById(i).style.background = "#aaaaaa";
         }
         document.getElementById(event.target.id).style.background = "#a64bf4";
@@ -40,9 +40,7 @@ class Step2 extends Component {
     }
 
     skill_event(event) {
-
         let url = 'skills'
-
         this.api.GetApi(url)
             .then(res => {
                 if (res.request.status === 200) {
@@ -51,7 +49,7 @@ class Step2 extends Component {
                         skills: response_data,
                         isLoading: true
                     })
-                    var list_data = [];
+                    const list_data = [];
                     for (let i = 0; i <= (response_data).length - 1; i++) {
                         list_data.push(response_data[i]['skillName'])
                     }
@@ -62,7 +60,7 @@ class Step2 extends Component {
 
                 } else {
                     let err = JSON.parse(res.request.response)
-                    console.log("=======================", res.request.status)
+                    console.log(res.request.status)
                     window.alert(err['message'])
                 }
             }).catch(error => {
@@ -71,18 +69,16 @@ class Step2 extends Component {
         });
     }
 
-
-    handleInputChange = (event) => {
-        let target = event.target.checked;
-        var value = event.target.value;
+    handleInputChange(event) {
+        let target = event.target;
+        let value = target.value;
 
         if (target.checked) {
             this.setState({
                 selected_skills: this.state.selected_skills.concat(value)
             }, this.count_input)
         } else {
-
-            var index = (this.state.selected_skills).indexOf(value);
+            const index = (this.state.selected_skills).indexOf(value);
             if (index > -1) {
                 (this.state.selected_skills).splice(index, 1);
                 this.count_input()
@@ -149,7 +145,7 @@ class Step2 extends Component {
                     <input type="checkbox" value={todo}
                            key={todo}
                            id={todo.slice(-6, -1)}
-                           onChange={event => this.handleInputChange(event)}/>
+                           onChange={this.handleInputChange}/>
                     <span className="skillValue">
                     {todo}
                     </span>
@@ -161,6 +157,7 @@ class Step2 extends Component {
         for (let i = 1; i <= Math.ceil(todos.length / todosPerPage); i++) {
             pageNumbers.push(i);
         }
+
 
 
         const isSubmit = this.state.submit_disable;
