@@ -26,7 +26,7 @@ class Step2 extends Component {
 
     handleClick(event) {
         let getClassName = document.getElementsByClassName("pageList");
-        for (let i =1; i<=getClassName.length; i++){
+        for (let i = 1; i<=getClassName.length; i++){
             document.getElementById(i).style.background = "#aaaaaa";
         }
         document.getElementById(event.target.id).style.background = "#a64bf4";
@@ -39,7 +39,7 @@ class Step2 extends Component {
         this.setState({skills: skills});
     }
 
-    skill_event(event) {
+    skill_event() {
         let url = 'skills'
         this.api.GetApi(url)
             .then(res => {
@@ -123,10 +123,9 @@ class Step2 extends Component {
                     window.alert(err['message'])
                 }
             }).catch(error => {
+                console.error(error)
         });
 
-        console.warn(this.state)
-        console.log(this.state.selected_skills)
 
     }
 

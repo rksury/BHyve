@@ -9,7 +9,7 @@ class Dashboard extends Component {
         this.state = {
             data: [],
             isLoading: false,
-            skill_data:[]
+            skill_data: []
         }
         this.user_event()
     }
@@ -32,9 +32,13 @@ class Dashboard extends Component {
                     window.alert(err['message'])
                 }
             }).catch(error => {
-            console.log("_____________________", error)
+            console.log(error)
         });
     }
+
+
+
+
 
     render() {
         const isLoading = this.state.isLoading;
@@ -42,59 +46,71 @@ class Dashboard extends Component {
         return (
             <>
                 {isLoading ? (
-                <div className={"container"}>
-                    <div className={"row"}>
-                        <div className={"col-md-12"}>
+                    <div className={"container"}>
+                        <div className={"row"}>
+                            <div className={"col-md-12"}>
 
-                            <div className="limiter">
-                                <div className="container-login100 ">
-                                    <div className="wrap-login100">
+                                <div className="limiter">
+                                    <div className="container-login100 ">
+                                        <div className="wrap-login100">
 
-                                        <div className="login100-form validate-form">
-                                            <span className="login100-form-title ">User Profile</span>
+                                            <div className="login100-form validate-form">
+                                                <span className="login100-form-title ">User Profile</span>
 
-                                            <div className="textContent col-md-12">
-                                                <div className="col-md-6">
-                                                    <span>Email :</span>
+                                                <div className="textContent col-md-12">
+                                                    <div className="col-md-6">
+                                                        <span>Email :</span>
+                                                    </div>
+                                                    <div className="col-md-6">
+                                                        <span className="">{this.state.data.username}</span>
+                                                    </div>
+
                                                 </div>
-                                                <div className="col-md-6">
-                                                    <span className="">{this.state.data.username}</span>
+
+                                                <div className="textContent col-md-12">
+                                                    <div className="col-md-6">
+                                                        <span>First Name :</span>
+                                                    </div>
+                                                    <div className="col-md-6">
+                                                        <span>{this.state.data.firstName}</span>
+                                                    </div>
+
                                                 </div>
+
+
+                                                <div className="textContent col-md-12">
+                                                    <div className="col-md-6">
+                                                        <span>Last Name :</span>
+                                                    </div>
+                                                    <div className="col-md-6">
+                                                        <span>{this.state.data.lastName}</span>
+                                                    </div>
+
+                                                </div>
+
+                                                <div className="textContent col-md-12">
+                                                    <div className="col-md-6">
+                                                        <span>Skills :</span>
+                                                    </div>
+                                                    <div className="col-md-6">
+                                                        <ul>
+                                                            {this.state.data.skills.map(skills => {
+                                                                return <li>{skills}</li>
+                                                            })}
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+
 
                                             </div>
-
-                                            <div className="textContent col-md-12">
-                                                <div className="col-md-6">
-                                                    <span>First Name :</span>
-                                                </div>
-                                                <div className="col-md-6">
-                                                    <span className="">{this.state.data.firstName}</span>
-                                                </div>
-
-                                            </div>
-
-
-                                            <div className="textContent col-md-12">
-                                                <div className="col-md-6">
-                                                    <span>Last Name :</span>
-                                                </div>
-                                                <div className="col-md-6">
-                                                    <span className="">{this.state.data.lastName}</span>
-                                                </div>
-
-                                            </div>
-
-
-
 
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 ) : ('')}
             </>
         );
