@@ -74,6 +74,7 @@ class Step2 extends Component {
         let value = target.value;
 
         if (target.checked) {
+            console.log(target,"&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
             this.setState({
                 selected_skills: this.state.selected_skills.concat(value)
             }, this.count_input)
@@ -144,6 +145,7 @@ class Step2 extends Component {
                     <input type="checkbox" value={todo}
                            key={todo}
                            id={todo.slice(-6, -1)}
+                           defaultChecked={this.state.selected_skills[index] === todo}
                            onChange={this.handleInputChange}/>
                     <span className="skillValue">
                     {todo}
